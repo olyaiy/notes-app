@@ -2,22 +2,20 @@ import Link from 'next/link';
 import styles from './Notes.module.css';
 import PocketBase from 'pocketbase';
 
-console.log('This log is at the top level of the file');
 
-const pb = new PocketBase('http://127.0.0.1:8090');
+export const dynamic = "auto";
+export const dynamicParams = true;
+export const revalidate = 0;
+export const fetchCache = 'auto';
+export const runtime = 'nodejs';
+export const preferredRegion = 'auto';
 
 
 // fetch a paginated records list
 async function getNotes() {
-    console.log('Attempting to fetch notes...');
-    try {
-        const resultList = await pb.collection('notes').getList(1, 50);
-        console.log('API call successful:', resultList);
-        return resultList.items;
-    } catch (error) {
-        console.error('API call failed:', error);
-        return [];
-    }
+    const pb = new PocketBase('http://127.0.0.1:8090');
+    const data = await pb.collection('notes').getList();
+    return data.items;
 }
 
 
