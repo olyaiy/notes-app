@@ -18,6 +18,9 @@ export default function CreateNotes() {
             content
         })
         })
+
+        setTitle('')
+        setContent('')
     }
 
 
