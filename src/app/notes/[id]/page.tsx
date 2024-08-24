@@ -1,6 +1,6 @@
 import React from 'react'
 
-import styles from './NotePage.module.css'  // Add this line
+import styles from '../Notes.module.css'  // Add this line
 
 async function getNote(id: string) {
     const res = await fetch(
