@@ -1,11 +1,15 @@
 'use client'
 
 import {useState} from 'react'
+import { useRouter } from 'next/navigation';
+
 
 
 export default function CreateNotes() {
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
+
+    const router = useRouter();
 
     const create = async () => {
         await fetch('http://127.0.0.1:8090/api/collections/notes/records', {
@@ -21,6 +25,7 @@ export default function CreateNotes() {
 
         setTitle('')
         setContent('')
+        router.refresh();
     }
 
 
